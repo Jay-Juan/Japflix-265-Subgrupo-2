@@ -6,18 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchURL(URL)
     let btnBuscar = document.getElementById('btnBuscar');
     let inputBuscar = document.getElementById('inputBuscar');
-    let listaMovies = document.getElementById('lista');
     
     btnBuscar.addEventListener('click', () =>{
         console.log(fetchData)
         let filteredMovies = filterMovies(inputBuscar.value, fetchData);
         displayMovies(filteredMovies);   
     })
-    
-    listaMovies.addEventListener('click', (e)=>{
-        e.target
-    });
-
 })
 
 function fetchURL(URL){
@@ -55,8 +49,4 @@ function displayMovies(movies) {
         `
     }
     listContainer.innerHTML = content
-}
-
-function displayOffCavas(){
-    
 }
