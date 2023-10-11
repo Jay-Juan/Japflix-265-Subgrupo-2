@@ -34,4 +34,9 @@ main {
     display: flex;
     justify-content: space-between;  
   }
+
+  #btnBuscar {
+    color: white;
+    background-color: rgb(226, 43, 43);
+   }
   
