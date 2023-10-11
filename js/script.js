@@ -40,7 +40,7 @@ function pasandoPuntaje(numero){
     thenumber= ((numero*5)/10);
     numEstrellas=Math.round(thenumber);
 }
-function creandoEstrellas(puntajeUser) {s
+function creandoEstrellas(puntajeUser) {
     let allStars = "";
     for (let i = 0; i < 5; i++) {
       if (i < puntajeUser) {
@@ -110,10 +110,10 @@ function offcanvasMostrarDatos(array, id) {
 
     console.log(añoCompleto)
 
-    yearDropdown.innerHTML =  `<a> Year: </a> <a> ${añoCompleto} </a>`
-    runtimeDropdown.innerHTML = `<a> Runtime: </a> <a> ${array[id].runtime} Mins</a>`
-    budgetDropdown.innerHTML = `<a> Budget: </a> <a> $${array[id].budget} </a>`
-    revenueDropdown.innerHTML = `<a> Revenue: </a> <a> $${array[id].revenue} </a>`
+    yearDropdown.innerHTML =  `<a> Year: </a> <a class="ps-2 pe-2"> ${añoCompleto} </a>`
+    runtimeDropdown.innerHTML = `<a> Runtime: </a> <a class="ps-2 pe-2"> ${array[id].runtime} Mins</a>`
+    budgetDropdown.innerHTML = `<a> Budget: </a> <a class="ps-2 pe-2"> $${array[id].budget} </a>`
+    revenueDropdown.innerHTML = `<a> Revenue: </a> <a class="ps-2 pe-2"> $${array[id].revenue} </a>`
     offcanvasTopLabel.innerHTML = array[id].title;
     overview.innerHTML = array[id].overview;
 
