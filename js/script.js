@@ -105,10 +105,15 @@ function offcanvasMostrarDatos(array, id) {
     let offcanvasTopLabel = document.getElementById('offcanvasTopLabel');
     let overview = document.getElementById('overview');
 
-    yearDropdown.innerHTML = "Year: " + array[id].release_date
-    runtimeDropdown.innerHTML = "Runtime: " + array[id].runtime + " mins"
-    budgetDropdown.innerHTML = "Budget: $" + array[id].budget
-    revenueDropdown.innerHTML = "Revenue: $" + array[id].revenue
+    let año = new Date(array[id].release_date);
+    let añoCompleto = año.getUTCFullYear();
+
+    console.log(añoCompleto)
+
+    yearDropdown.innerHTML =  `<a> Year: </a> <a> ${añoCompleto} </a>`
+    runtimeDropdown.innerHTML = `<a> Runtime: </a> <a> ${array[id].runtime} Mins</a>`
+    budgetDropdown.innerHTML = `<a> Budget: </a> <a> $${array[id].budget} </a>`
+    revenueDropdown.innerHTML = `<a> Revenue: </a> <a> $${array[id].revenue} </a>`
     offcanvasTopLabel.innerHTML = array[id].title;
     overview.innerHTML = array[id].overview;
 
