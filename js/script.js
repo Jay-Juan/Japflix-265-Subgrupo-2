@@ -38,9 +38,9 @@ let puntajeEstrellas = "";
 let numEstrellas= ""
 function pasandoPuntaje(numero){
     thenumber= ((numero*5)/10);
-    numEstrellas=thenumber;
+    numEstrellas=Math.round(thenumber);
 }
-function creandoEstrellas(puntajeUser) {
+function creandoEstrellas(puntajeUser) {s
     let allStars = "";
     for (let i = 0; i < 5; i++) {
       if (i < puntajeUser) {
