@@ -39,4 +39,14 @@ main {
     color: white;
     background-color: rgb(226, 43, 43);
    }
+
+   .links{
+    text-decoration: none;
+    color: black;
+   }
+
+   .links:hover{
+    text-decoration: none;
+    color: black;
+   }
   

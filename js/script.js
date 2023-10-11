@@ -98,6 +98,15 @@ function agregarEventos(array) {                    //Recibe el array de las pel
 
 function offcanvasMostrarDatos(array, id) {
 
+    let contGeneros = document.getElementById('generos');
+    contGeneros.innerHTML = "";
+
+    for(let i of array[id].genres){
+        contGeneros.innerHTML += `
+        <p class="col">${i.name}</p>
+        `
+    }
+
     let yearDropdown = document.getElementById('yearDropdown');
     let runtimeDropdown = document.getElementById('runtimeDropdown');
     let budgetDropdown = document.getElementById('budgetDropdown');
@@ -110,10 +119,10 @@ function offcanvasMostrarDatos(array, id) {
 
     console.log(añoCompleto)
 
-    yearDropdown.innerHTML =  `<a> Year: </a> <a class="ps-2 pe-2"> ${añoCompleto} </a>`
-    runtimeDropdown.innerHTML = `<a> Runtime: </a> <a class="ps-2 pe-2"> ${array[id].runtime} Mins</a>`
-    budgetDropdown.innerHTML = `<a> Budget: </a> <a class="ps-2 pe-2"> $${array[id].budget} </a>`
-    revenueDropdown.innerHTML = `<a> Revenue: </a> <a class="ps-2 pe-2"> $${array[id].revenue} </a>`
+    yearDropdown.innerHTML =  `<a> Year: </a> <a class="ps-2 pe-2 links"> ${añoCompleto} </a>`
+    runtimeDropdown.innerHTML = `<a> Runtime: </a> <a class="ps-2 pe-2 links"> ${array[id].runtime} Mins</a>`
+    budgetDropdown.innerHTML = `<a> Budget: </a> <a class="ps-2 pe-2 links"> $${array[id].budget} </a>`
+    revenueDropdown.innerHTML = `<a> Revenue: </a> <a class="ps-2 pe-2 links"> $${array[id].revenue} </a>`
     offcanvasTopLabel.innerHTML = array[id].title;
     overview.innerHTML = array[id].overview;
 
