@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(fetchData)
         let filteredMovies = filterMovies(inputBuscar.value, fetchData);
         displayMovies(filteredMovies);   
+        agregarEventos(filteredMovies);
     })
 })
 
@@ -56,21 +57,61 @@ function creandoEstrellas(puntajeUser) {
 function displayMovies(movies) {
     let listContainer = document.getElementById('lista')
     let content = ``;
-    for (let movie of movies) {
-        pasandoPuntaje(movie.vote_average);
+
+    for(let i = 0; i < movies.length; i++){
+        pasandoPuntaje(movies[i].vote_average);
         creandoEstrellas(numEstrellas);
         content += `
-        <li class="movies">
+        <li id="${i}" class="movies">
         <div class="border border-light rounded p-2 col" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
         <div class="texto text-light title-and-stars">
-        <p><b>${movie.title}</b></p><div>${puntajeEstrellas}</div>
+        <p><b>${movies[i].title}</b></p><div>${puntajeEstrellas}</div>
         </div> 
         <div class="texto text-light ">
-        <p><em>${movie.tagline}</em></p>
+        <p><em>${movies[i].tagline}</em></p>
         </div>
         </div>
         </li>
         `
     }
+
     listContainer.innerHTML = content
+}
+
+function agregarEventos(array) {                    //Recibe el array de las pelis filtradas para aplicar pasarlo como argumento a la funcion que le agrega a las pelis en la lista
+    let peliculas = Array.from(document.getElementsByTagName('li'));
+    peliculas.forEach(Element => {
+        Element.addEventListener('click', (event) => {
+            console.log(event)
+            let li = event.target.closest("li")  // El closest es para que tome el asigne a la variable li el li mas cercano al evento de click
+            console.log("hola")
+            console.log(li)
+            console.log(li.id)
+
+            if (li) {
+                offcanvasMostrarDatos(array, li.id) // Funcion que le agrega al evento click de la lista de pelis, se le pase el li.id para usarlo com indice en el array
+            }
+        })
+    })
+}
+
+
+function offcanvasMostrarDatos(array, id) {
+
+    let yearDropdown = document.getElementById('yearDropdown');
+    let runtimeDropdown = document.getElementById('runtimeDropdown');
+    let budgetDropdown = document.getElementById('budgetDropdown');
+    let revenueDropdown = document.getElementById('revenueDropdown');
+    let offcanvasTopLabel = document.getElementById('offcanvasTopLabel');
+    let overview = document.getElementById('overview');
+
+    yearDropdown.innerHTML = "Year: " + array[id].release_date
+    runtimeDropdown.innerHTML = "Runtime: " + array[id].runtime + " mins"
+    budgetDropdown.innerHTML = "Budget: $" + array[id].budget
+    revenueDropdown.innerHTML = "Revenue: $" + array[id].revenue
+    offcanvasTopLabel.innerHTML = array[id].title;
+    overview.innerHTML = array[id].overview;
+
+
+ 
 }
