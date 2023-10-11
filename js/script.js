@@ -6,17 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchURL(URL)
     let btnBuscar = document.getElementById('btnBuscar');
     let inputBuscar = document.getElementById('inputBuscar');
-
     
     btnBuscar.addEventListener('click', () =>{
         console.log(fetchData)
         let filteredMovies = filterMovies(inputBuscar.value, fetchData);
         displayMovies(filteredMovies);   
     })
-
 })
-
-
 
 function fetchURL(URL){
     fetch(URL)
@@ -78,10 +74,3 @@ function displayMovies(movies) {
     }
     listContainer.innerHTML = content
 }
-
-
-
-
-
-
-
