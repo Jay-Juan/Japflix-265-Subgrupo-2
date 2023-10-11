@@ -6,17 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchURL(URL)
     let btnBuscar = document.getElementById('btnBuscar');
     let inputBuscar = document.getElementById('inputBuscar');
-
     
     btnBuscar.addEventListener('click', () =>{
         console.log(fetchData)
         let filteredMovies = filterMovies(inputBuscar.value, fetchData);
         displayMovies(filteredMovies);   
     })
-
 })
-
-
 
 function fetchURL(URL){
     fetch(URL)
@@ -54,20 +50,3 @@ function displayMovies(movies) {
     }
     listContainer.innerHTML = content
 }
-
-
-
-`<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
-
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-  <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel">Offcanvas right</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    ...
-  </div>
-</div>`
-
-
-
