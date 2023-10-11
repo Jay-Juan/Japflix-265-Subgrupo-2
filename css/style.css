@@ -30,3 +30,8 @@ main {
 .movies {
     cursor: pointer;
 }
+.title-and-stars {
+    display: flex;
+    justify-content: space-between;  
+  }
+  
