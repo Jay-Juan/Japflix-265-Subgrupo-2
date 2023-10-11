@@ -30,23 +30,47 @@ function fetchURL(URL){
 // Filtra el array con las pelis 
 function filterMovies(input, movies) {
 
-    return movies.filter((movie) => movie.title.toLowerCase().includes(input.toLowerCase()));
+    return movies.filter((movie) => movie.title.toLowerCase().includes(input.toLowerCase())||
+    movie.genres.some(genre => genre.name.toLowerCase().includes(input.toLowerCase()))||
+    movie.tagline.toLowerCase().includes(input.toLowerCase())||
+    movie.overview.toLowerCase().includes(input.toLowerCase())
+    );
 }
-
+//Variables y funciones para crear las estrellas según el puntaje
+let puntajeEstrellas = "";
+let numEstrellas= ""
+function pasandoPuntaje(numero){
+    thenumber= ((numero*5)/10);
+    numEstrellas=thenumber;
+}
+function creandoEstrellas(puntajeUser) {
+    let allStars = "";
+    for (let i = 0; i < 5; i++) {
+      if (i < puntajeUser) {
+        
+        allStars += '<i class="fa fa-star checked"></i>';
+      } else {
+        allStars += '<i class="fa fa-star"></i>';
+      } 
+    }
+    puntajeEstrellas = allStars;
+  }
 // Genera los elementos con cada peli
 // Falta formatear y ponerle bootstrap
 function displayMovies(movies) {
     let listContainer = document.getElementById('lista')
     let content = ``;
     for (let movie of movies) {
+        pasandoPuntaje(movie.vote_average);
+        creandoEstrellas(numEstrellas);
         content += `
         <li class="movies">
         <div class="border border-light rounded p-2 col" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-        <div class="texto text-light">
-        <p><b>${movie.title}</b></p>
+        <div class="texto text-light title-and-stars">
+        <p><b>${movie.title}</b></p><div>${puntajeEstrellas}</div>
         </div> 
-        <div class="texto text-light">
-        <p><em>${movie.tagline} ${movie.vote_average}</em></p>
+        <div class="texto text-light ">
+        <p><em>${movie.tagline}</em></p>
         </div>
         </div>
         </li>
@@ -57,17 +81,7 @@ function displayMovies(movies) {
 
 
 
-`<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-  <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel">Offcanvas right</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    ...
-  </div>
-</div>`
 
 
 
